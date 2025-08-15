@@ -9,5 +9,7 @@
         <h1>{{ post.title }}</h1>
         <p><em>{{ post.published }}</em></p>
         <div>{{ post.body }}</div>
+        <a href="{% url 'blog:update' post.pk %}">Редактировать</a>
+        <a href="{% url 'blog:delete' post.pk %}">Удалить</a>
     </body>
 </html>

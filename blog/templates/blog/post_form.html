@@ -1,0 +1,8 @@
+<form method="post">
+    {% csrf_token %} {{ form.non_field_errors }}
+    <div>
+        {{ form.title.label_tag }} {{ form.title }} {{ form.title.errors }}
+    </div>
+    <div>{{ form.body.label_tag }} {{ form.body }} {{ form.body.errors }}</div>
+    <button type="submit">Сохранить</button>
+</form>

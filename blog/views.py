@@ -1,5 +1,13 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
+from django.urls import reverse_lazy
 from .models import Post
+from .forms import PostForm
 
 
 class PostListView(ListView):
@@ -13,3 +21,21 @@ class PostDetailView(DetailView):
     model = Post
     template_name = "blog/detail.html"  # иначе blog/post_detail.html
     context_object_name = "post"
+
+
+class PostCreateView(CreateView):
+    model = Post
+    form_class = PostForm
+    success_url = reverse_lazy("blog:index")
+
+
+class PostUpdateView(UpdateView):
+    model = Post
+    form_class = PostForm
+    success_url = reverse_lazy("blog:index")
+
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = "blog/post_confirm_delete.html"
+    success_url = reverse_lazy("blog:index")
